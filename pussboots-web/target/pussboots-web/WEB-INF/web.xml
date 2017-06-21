@@ -1,0 +1,136 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+
+    <!--使用配置Servlet与url映射，可以使用@WebServlet注解代替-->
+    <!--<servlet>-->
+    <!--<servlet-name>ServletDemo</servlet-name>-->
+    <!--<servlet-clservlet.servletvlet.ServletDemo</servlet-class>-->
+
+    <!-- 以下参数可以通过ServletConfig取得 -->
+    <!--<init-param>-->
+    <!--<param-name>user</param-name>-->
+    <!--<param-value>lerroy</param-value>-->
+    <!--</init-param>-->
+    <!--<init-param>-->
+    <!--<param-name>passwd</param-name>-->
+    <!--<param-value>123456</param-value>-->
+    <!--</init-param>-->
+
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>ServletDemo</servlet-name>-->
+    <!--<url-pattern>/ServletDemo</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--end-->
+
+    <!-- ServletContext参数样例 -->
+    <context-param>
+        <param-name>user</param-name>
+        <param-value>lerroy</param-value>
+    </context-param>
+    <context-param>
+        <param-name>passwd</param-name>
+        <param-value>123456</param-value>
+    </context-param>
+    <!--end-->
+
+    <!--一个Servlet filter样例，用于拦截web请求，打印请求日志 -->
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>com.lerroy.pussboots.web.filterdemo.LogFilter</filter-class>
+        <init-param>
+            <param-name>sampleName1</param-name>
+            <param-value>sampleValue1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>sampleName2</param-name>
+            <param-value>sampleValue2</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- LogFilter end -->
+
+
+    <!--一个登陆拦截器样例-->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.lerroy.pussboots.web.logindemo.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--一个登陆拦截器样例end-->
+
+    <!-- 配置session超时时间，单位为分钟 -->
+    <!-- 如果没有配置，则取Servlet容器配置的默认时间 -->
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+    <!--session超时时间end -->
+
+
+    <!-- servlet的监听器，用于监听Servlet和session的各种事件和生命周期 -->
+    <listener>
+        <listener-class>com.lerroy.pussboots.web.listenerdemo.HttpSessionListenerDemo
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.lerroy.pussboots.web.listenerdemo.ServletContextListenerDemo
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.lerroy.pussboots.web.listenerdemo.HttpSessionAttributeListenerDemo
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.lerroy.pussboots.web.listenerdemo.ServletRequestAttributeListenerDemo
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.lerroy.pussboots.web.listenerdemo.ServletContextAttributeListenerDemo
+        </listener-class>
+    </listener>
+    <!-- servlet监听器end -->
+
+
+    <!-- spring mvc相关配置 -->
+
+    <!-- 定义一个ContextLoaderListener，用于监听Servlet容器初始化Servlet上下文 -->
+    <!-- 在该监听器中，初始化spring-mvc上下文，因此需要spring bean配置文件，也就是contextConfigLocation参数 -->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:/web-applicationContext.xml</param-value>
+    </context-param>
+
+    <!-- 注册DispatcherServlet用于根据url映射Controller -->
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:/web-applicationContext.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!-- spring mvc相关配置end -->
+
+
+</web-app>

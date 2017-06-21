@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.lerroy.pussboots</groupId>
+  <artifactId>pussboots-web</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>pussboots-web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <parent>
+    <groupId>com.lerroy.pussboots</groupId>
+    <artifactId>pussboots-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <dependencies>
+    <!-- spring mvc最小依赖包 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
+    <!-- spring mvc最小依赖包 end-->
+    <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-tools -->
+
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity-tools</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+
+
+  </dependencies>
+  <build>
+    <finalName>pussboots-web</finalName>
+  </build>
+</project>
