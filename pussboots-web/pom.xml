@@ -55,6 +55,10 @@
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
     </dependency>
+      <dependency>
+          <groupId>com.lerroy.pussboots</groupId>
+          <artifactId>pussboots-core</artifactId>
+      </dependency>
 
 
   </dependencies>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+    <import resource="classpath*:/spring/common-dal.xml"/>
+
+    <!-- 方法拦截器示例 -->
+    <bean id="interceptorService" class="com.lerroy.pussboots.core.interceptor.InterceptorServiceImpl"/>
+    <bean id="methodInterceptorDemo" class="com.lerroy.pussboots.core.interceptor.MethodInterceptorDemo"/>
+    <bean id="beanNameAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>*Service</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>methodInterceptorDemo</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 方法拦截器示例end -->
+
+    <bean id="userService" class="com.lerroy.pussboots.core.service.UserServiceImpl"/>
+</beans>
