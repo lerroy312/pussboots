@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2010 All Rights Reserved.
  */
-package com.lerroy.pussboots.core.interceptor;
+package com.lerroy.pussboots.core.aop;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

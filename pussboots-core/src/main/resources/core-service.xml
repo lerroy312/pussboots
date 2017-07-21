@@ -7,8 +7,8 @@
     <import resource="classpath*:/spring/common-dal.xml"/>
 
     <!-- 方法拦截器示例 -->
-    <bean id="interceptorService" class="com.lerroy.pussboots.core.interceptor.InterceptorServiceImpl"/>
-    <bean id="methodInterceptorDemo" class="com.lerroy.pussboots.core.interceptor.MethodInterceptorDemo"/>
+    <bean id="aopService" class="com.lerroy.pussboots.core.aop.AopServiceImpl"/>
+    <bean id="methodInterceptorDemo" class="com.lerroy.pussboots.core.aop.MethodInterceptorDemo"/>
     <bean id="beanNameAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
         <property name="beanNames">
             <list>
