@@ -17,9 +17,10 @@ public class MethodInterceptorDemo implements MethodInterceptor {
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Logger logger = Logger.getLogger(MethodInterceptorDemo.class.getName());
-        logger.info("method start:" + invocation.getMethod().getName());
+        logger.info("MethodInterceptorDemo-method start:" + invocation.getMethod().getName());
         Object result = invocation.proceed();
-        logger.info("method end:" + invocation.getMethod().getName() + ",result=" + result);
+        logger.info("MethodInterceptorDemo-method end:" + invocation.getMethod().getName()
+                    + ",result=" + result);
         return result;
     }
 }

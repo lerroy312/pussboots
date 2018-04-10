@@ -71,6 +71,5 @@ public class MyInterfaceReflectionDemo {
                 "the filed name is " + field.getName() + ",value is " + field.get(instance));
         }
 
-        ClassLoader classLoader = MyInterfaceImplTest.class.getClassLoader();
     }
 }

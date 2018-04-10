@@ -8,5 +8,9 @@ package com.lerroy.pussboots.core.aop;
  * Created by chunhong.pch on 17/7/13.
  */
 public interface AopService {
-    void fun();
+    public void fun();
+
+    public void funException();
+
+    public void funPointCut();
 }

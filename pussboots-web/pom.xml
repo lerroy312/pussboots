@@ -31,6 +31,12 @@
     <!-- spring mvc最小依赖包 end-->
     <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-tools -->
 
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.apache.velocity</groupId>
       <artifactId>velocity-tools</artifactId>

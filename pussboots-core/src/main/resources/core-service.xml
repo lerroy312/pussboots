@@ -6,8 +6,14 @@
        default-autowire="byName">
     <import resource="classpath*:/spring/common-dal.xml"/>
 
-    <!-- 方法拦截器示例 -->
+    <bean id="userService" class="com.lerroy.pussboots.core.service.UserServiceImpl"/>
+
+
+    <!-- aop方法拦截器示例 -->
     <bean id="aopService" class="com.lerroy.pussboots.core.aop.AopServiceImpl"/>
+    <bean id="methodBeforeAdviceDemo" class="com.lerroy.pussboots.core.aop.MethodBeforeAdviceDemo"/>
+    <bean id="afterReturningAdviceDemo" class="com.lerroy.pussboots.core.aop.AfterReturningAdviceDemo"/>
+    <bean id="throwsAdviceDemo" class="com.lerroy.pussboots.core.aop.ThrowsAdviceDemo"/>
     <bean id="methodInterceptorDemo" class="com.lerroy.pussboots.core.aop.MethodInterceptorDemo"/>
     <bean id="beanNameAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
         <property name="beanNames">
@@ -18,10 +24,24 @@
         <property name="interceptorNames">
             <list>
                 <value>methodInterceptorDemo</value>
+                <value>methodBeforeAdviceDemo</value>
+                <value>afterReturningAdviceDemo</value>
+                <value>throwsAdviceDemo</value>
+                <value>defaultPointcutAdvisorDemo</value>
             </list>
         </property>
     </bean>
-    <!-- 方法拦截器示例end -->
+     <!--aop方法拦截器示例end -->
 
-    <bean id="userService" class="com.lerroy.pussboots.core.service.UserServiceImpl"/>
+    <!--pointcut切点示例-->
+    <bean id="nameMatchMethodPointcutDemo" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedName" value="funPointCut"/>
+    </bean>
+    <bean id="defaultPointcutAdvisorDemo" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="nameMatchMethodPointcutDemo"/>
+        <property name="advice" ref="methodInterceptorDemo"/>
+    </bean>
+    <!--pointcut切点示例end-->
+
+
 </beans>

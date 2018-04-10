@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2010 All Rights Reserved.
  */
-package com.lerroy.pussboots.common.threadpool;
+package com.lerroy.pussboots.common.concurrent;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
@@ -92,20 +92,68 @@ public class ThreadExecutorDemo {
 
     /**
      * 可延迟调度执行的线程池
-     *
+     * ScheduledExecutorService可用于周期性调度的任务
      */
     private static void scheduledThreadPoolDemo() {
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(10);
         executorService.schedule(runnableDemo(), 3, TimeUnit.SECONDS);
+        //10秒后开始执行，以后每小时调度一次
+        executorService.scheduleAtFixedRate(runnableDemo(),10, 60*60, TimeUnit.SECONDS);
         System.out.println("submit task success,wait 3s to execute...");
     }
 
+    /**
+     * 测试某个runnable抛出异常
+     */
+    private static void exceptionThreadExecutorDemo() {
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        for (int i = 0; i < 3; i++) {
+            int index = i;
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("task " + index + " begin run");
+                    if (index == 1) {
+                        throw new RuntimeException("ssss");
+                    }
+                    System.out.println("task " + index + " run completed");
+                }
+            });
+        }
+        System.out.println("all tasks had been submitted");
+    }
+
+    /**
+     * 测试线程池中执行runnable时，前面的runnable一直阻塞，后面的能否得到执行
+     */
+    private static void blockRunnableDemo() {
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        for (int i = 0; i < 4; i++) {
+            int n = i;
+            executorService.submit(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("enter task "+n);
+                    if (n != 3) {
+                        try {
+                            Thread.sleep(1000000000L);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
+        }
+    }
+
     public static void main(String[] args) {
-        cachedThreadPoolDemo();
-        cachedThreadPoolWithThreadFactoryDemo();
-        fixedThreadPoolDemo();
-        singleThreadExecutorDemo();
-        scheduledThreadPoolDemo();
+        // cachedThreadPoolDemo();
+        // cachedThreadPoolWithThreadFactoryDemo();
+        // fixedThreadPoolDemo();
+        // singleThreadExecutorDemo();
+        // scheduledThreadPoolDemo();
+        //exceptionThreadExecutorDemo();
+        //blockRunnableDemo();
     }
 
 }

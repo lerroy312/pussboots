@@ -60,14 +60,14 @@
 
 
     <!--一个登陆拦截器样例-->
-    <filter>
-        <filter-name>LoginFilter</filter-name>
-        <filter-class>com.lerroy.pussboots.web.logindemo.LoginFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    <!--<filter>-->
+        <!--<filter-name>LoginFilter</filter-name>-->
+        <!--<filter-class>com.lerroy.pussboots.web.logindemo.LoginFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>LoginFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
     <!--一个登陆拦截器样例end-->
 
     <!-- 配置session超时时间，单位为分钟 -->

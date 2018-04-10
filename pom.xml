@@ -10,6 +10,7 @@
 
     <properties>
         <spring.version>4.0.2.RELEASE</spring.version>
+        <hadoop.version>2.7.3</hadoop.version>
     </properties>
 
     <!-- 子模块 -->
@@ -144,6 +145,54 @@
                 <version>1.4</version>
             </dependency>
             <!-- db end -->
+
+            <!-- jvm缓存 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>19.0</version>
+            </dependency>
+            <!-- jvm缓存end -->
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.29</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId >
+                <artifactId>h2</artifactId>
+                <version>1.4.192</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>3.3.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-core</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-common</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-hdfs</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.lerroy.pussboots</groupId>

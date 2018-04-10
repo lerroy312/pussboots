@@ -10,10 +10,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Created by chunhong.pch on 17/7/13.
  */
-public class MethodInterceptorDemoTest {
+public class AopDemoTest {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("core-service.xml");
         AopService aopService = (AopService) context.getBean("aopService");
         aopService.fun();
+        //aopService.funException();
+        aopService.funPointCut();
     }
 }

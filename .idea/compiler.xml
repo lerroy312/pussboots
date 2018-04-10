@@ -16,6 +16,7 @@
       <module name="pussboots-common" target="1.8" />
       <module name="pussboots-core" target="1.8" />
       <module name="pussboots-dal" target="1.8" />
+      <module name="pussboots-hadoop" target="1.5" />
       <module name="pussboots-parent" target="1.5" />
       <module name="pussboots-web" target="1.8" />
     </bytecodeTargetLevel>
