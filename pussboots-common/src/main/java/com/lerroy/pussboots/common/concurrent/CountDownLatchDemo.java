@@ -13,10 +13,10 @@ import java.util.concurrent.CountDownLatch;
 public class CountDownLatchDemo {
     
     public static void main(String[] args) {
-        Random random = new Random();
+        final Random random = new Random();
         int nThreads = 4;
-        CountDownLatch startLatch = new CountDownLatch(1);
-        CountDownLatch stopLatch = new CountDownLatch(nThreads);
+        final CountDownLatch startLatch = new CountDownLatch(1);
+        final CountDownLatch stopLatch = new CountDownLatch(nThreads);
         for (int i = 0; i < nThreads; i++) {
             //同时发起n个线程
             new Thread(new Runnable() {

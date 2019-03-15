@@ -17,6 +17,8 @@
     <modules>
         <module>pussboots-web</module>
         <module>pussboots-core</module>
+        <module>pussboots-dal</module>
+        <module>pussboots-common</module>
     </modules>
 
     <dependencyManagement>
@@ -115,6 +117,21 @@
                 <artifactId>commons-logging</artifactId>
                 <version>1.1.1</version>
             </dependency>
+
+            <!-- jmockit框架 -->
+            <dependency>
+                <groupId>com.googlecode.jmockit</groupId>
+                <artifactId>jmockit</artifactId>
+                <version>1.5</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.jmockit</groupId>
+                <artifactId>jmockit-coverage</artifactId>
+                <version>0.999.24</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- jmockit框架end -->
 
             <dependency>
                 <groupId>junit</groupId>

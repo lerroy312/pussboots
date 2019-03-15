@@ -60,7 +60,7 @@ public class SynchronizedDemo {
     public static void testSynchronizedOnMethod(){
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         SynchronizedDemo demo1 = new SynchronizedDemo();
-        List<Future<Void>> futures = new ArrayList<>();
+        List<Future<Void>> futures = new ArrayList<Future<Void>>();
         for (int i = 0; i < 10; i++) {
             futures.add(executorService.submit(new Callable<Void>() {
                 @Override public Void call() throws Exception {

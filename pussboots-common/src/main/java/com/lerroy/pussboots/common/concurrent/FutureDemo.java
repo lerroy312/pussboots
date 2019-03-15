@@ -18,7 +18,7 @@ import java.util.concurrent.Future;
 public class FutureDemo {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-        List<Future<String>> futureList = new ArrayList<>();
+        List<Future<String>> futureList = new ArrayList<Future<String>>();
         for (int i = 0; i < 3; i++) {
             int index = i;
             futureList.add(executorService.submit(new Callable<String>() {

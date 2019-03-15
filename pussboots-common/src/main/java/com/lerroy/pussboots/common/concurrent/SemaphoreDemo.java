@@ -14,11 +14,11 @@ import java.util.concurrent.Semaphore;
  */
 public class SemaphoreDemo {
     public static void main(String[] args) {
-        Semaphore semaphore = new Semaphore(5);
-        Random random = new Random();
+        final Semaphore semaphore = new Semaphore(5);
+        final Random random = new Random();
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 10; i++) {
-            int n = i;
+            final int n = i;
             executorService.submit(new Runnable() {
                 @Override public void run() {
                     try {

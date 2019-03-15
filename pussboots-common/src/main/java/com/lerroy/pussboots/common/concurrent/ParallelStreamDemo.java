@@ -19,8 +19,8 @@ public class ParallelStreamDemo {
     private static String s;
 
     public static void main(String[] args) {
-        List<String> fileNames1 = new ArrayList<>();
-        List<String> fileNames2 = new ArrayList<>();
+        List<String> fileNames1 = new ArrayList<String>();
+        List<String> fileNames2 = new ArrayList<String>();
         for (int i = 0; i < 500; i++) {
             fileNames1.add("/Users/lerroy/Downloads/test/ParallelStream/" + String.valueOf(i));
             fileNames2.add("/Users/lerroy/Downloads/test/executor/" + String.valueOf(i));

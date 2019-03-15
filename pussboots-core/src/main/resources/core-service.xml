@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd"
-       default-autowire="byName">
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache" xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd" default-autowire="byName">
     <import resource="classpath*:/spring/common-dal.xml"/>
 
     <bean id="userService" class="com.lerroy.pussboots.core.service.UserServiceImpl"/>
@@ -42,6 +39,28 @@
         <property name="advice" ref="methodInterceptorDemo"/>
     </bean>
     <!--pointcut切点示例end-->
+
+
+    <!-- spring缓存注解框架 -->
+    <cache:annotation-driven/>
+    <bean id="cacheUserService" class="com.lerroy.pussboots.core.cache.springcacheannotation.CacheUserServiceImpl"/>
+
+    <!--<bean id="concurrentMapCache" class="org.springframework.cache.concurrent.ConcurrentMapCache">-->
+        <!--<constructor-arg name="name" value="UserService"/>-->
+    <!--</bean>-->
+    <bean  id="myCacheProvider" class="com.lerroy.pussboots.core.cache.springcacheannotation.MyCacheProvider" init-method="init">
+        <property name="name" value="UserService"/>
+    </bean>
+
+    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <!--<ref bean="concurrentMapCache"/>-->
+                <ref bean="myCacheProvider"/>
+            </set>
+        </property>
+    </bean>
+    <!-- spring缓存注解框架 end-->
 
 
 </beans>

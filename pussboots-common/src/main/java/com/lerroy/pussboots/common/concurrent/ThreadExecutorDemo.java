@@ -108,7 +108,7 @@ public class ThreadExecutorDemo {
     private static void exceptionThreadExecutorDemo() {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         for (int i = 0; i < 3; i++) {
-            int index = i;
+            final int index = i;
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
@@ -129,7 +129,7 @@ public class ThreadExecutorDemo {
     private static void blockRunnableDemo() {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         for (int i = 0; i < 4; i++) {
-            int n = i;
+            final int n = i;
             executorService.submit(new Runnable() {
                 @Override
                 public void run() {
