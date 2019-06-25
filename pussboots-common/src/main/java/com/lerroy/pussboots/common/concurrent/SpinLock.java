@@ -3,45 +3,45 @@ package com.lerroy.pussboots.common.concurrent;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class SpinLock {
-    //javaÖĞÔ­×Ó£¨CAS£©²Ù×÷
-    //³ÖÓĞ×ÔĞıËøµÄÏß³Ì¶ÔÏó
+    //javaä¸­åŸå­ï¼ˆCASï¼‰æ“ä½œ
+    //æŒæœ‰è‡ªæ—‹é”çš„çº¿ç¨‹å¯¹è±¡
     AtomicReference<Thread> owner = new AtomicReference<Thread>();
 
-    /** ÒıÓÃ¼ÆÊı */
+    /** å¼•ç”¨è®¡æ•° */
     private int             count;
 
     /**
-     * ¼ÓËø
+     * åŠ é”
      */
     public void lock() {
 
         Thread cur = Thread.currentThread();
         if (owner.get() == cur) {
-            //±¾Ïß³ÌÒÑ¾­³ÖÓĞËø£¬ÔòÔö¼ÓÒıÓÃ¼ÆÊı
+            //æœ¬çº¿ç¨‹å·²ç»æŒæœ‰é”ï¼Œåˆ™å¢åŠ å¼•ç”¨è®¡æ•°
             count++;
             return;
         }
 
-        // lockº¯Êı½«ownerÉèÖÃÎªµ±Ç°Ïß³Ì£¬²¢ÇÒÔ¤²âÔ­À´µÄÖµÎª¿Õ
-        // µ±ÓĞµÚ¶ş¸öÏß³Ìµ÷ÓÃlock²Ù×÷Ê±ÓÉÓÚownerÖµ²»Îª¿Õ£¬µ¼ÖÂÑ­»·	
+        // lockå‡½æ•°å°†ownerè®¾ç½®ä¸ºå½“å‰çº¿ç¨‹ï¼Œå¹¶ä¸”é¢„æµ‹åŸæ¥çš„å€¼ä¸ºç©º
+        // å½“æœ‰ç¬¬äºŒä¸ªçº¿ç¨‹è°ƒç”¨lockæ“ä½œæ—¶ç”±äºownerå€¼ä¸ä¸ºç©ºï¼Œå¯¼è‡´å¾ªç¯	
 
-        //Ò»Ö±±»Ö´ĞĞ£¬Ö±ÖÁµÚÒ»¸öÏß³Ìµ÷ÓÃunlockº¯Êı½«ownerÉèÖÃÎªnull£¬µÚ¶ş¸öÏß³Ì²ÅÄÜ½øÈëÁÙ½çÇø¡£
+        //ä¸€ç›´è¢«æ‰§è¡Œï¼Œç›´è‡³ç¬¬ä¸€ä¸ªçº¿ç¨‹è°ƒç”¨unlockå‡½æ•°å°†ownerè®¾ç½®ä¸ºnullï¼Œç¬¬äºŒä¸ªçº¿ç¨‹æ‰èƒ½è¿›å…¥ä¸´ç•ŒåŒºã€‚
         while (!owner.compareAndSet(null, cur)) {
             System.out.println(cur.getName() + " block");
         }
     }
 
     /**
-     * ÊÍ·ÅËø
+     * é‡Šæ”¾é”
      */
     public void unLock() {
-        //unlockº¯Êı½«ownerÉèÖÃÎªnull,²¢ÇÒÔ¤²âÖµÎªµ±Ç°Ïß³Ì
+        //unlockå‡½æ•°å°†ownerè®¾ç½®ä¸ºnull,å¹¶ä¸”é¢„æµ‹å€¼ä¸ºå½“å‰çº¿ç¨‹
         Thread cur = Thread.currentThread();
         owner.compareAndSet(cur, null);
     }
 
     /**
-     * ²âÊÔ´úÂë
+     * æµ‹è¯•ä»£ç 
      * @param args
      */
     public static void main(String[] args) {
